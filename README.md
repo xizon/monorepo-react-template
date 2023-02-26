@@ -1,6 +1,6 @@
 # Monorepo React Template
 
-This repository is a Monorepo sample based on Lerna that creates a modern build system for managing and publishing multiple packages.
+A monorepository sample based on Lerna that creates a modern build system for managing and publishing multiple packages.
 
 ![screenshot](screenshot.jpg).
 
