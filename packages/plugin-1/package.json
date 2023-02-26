@@ -1,0 +1,20 @@
+{
+    "private": true,
+    "name": "plugin-1",
+    "version": "1.0.0",
+    "description": "plugin-1 in monorepo",
+    "keywords": [],
+    "scripts": {
+        "dev": "webpack --progress --mode development --config build/config.js",
+        "build": "webpack --progress --mode production --config build/config.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "plugin-component": "*"
+    },
+    "devDependencies": {
+        "webpack": "^5.47.1",
+        "webpack-cli": "^4.9.1",
+        "html-webpack-plugin": "^5.5.0"
+    }
+}

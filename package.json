@@ -1,0 +1,36 @@
+{
+    "private": true,
+    "author": "UIUX Lab",
+    "email": "uiuxlab@gmail.com",
+    "name": "monorepo-react-template",
+    "version": "0.0.1",
+    "description": "This repository is a Monorepo sample based on Lerna that creates a modern build system for managing and publishing multiple packages.",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/xizon/monorepo-react-template.git"
+    },
+    "keywords": [
+        "monorepo",
+        "template",
+        "lerna"
+    ],
+    "workspaces": [
+        "packages/*"
+    ],
+    "dependencies": {
+        "mobx": "^6.3.13",
+        "mobx-react": "^7.2.1",
+        "react": "18.1.0",
+        "react-dom": "18.1.0",
+        "react-icons": "2.2.7",
+        "react-router": "4.3.1",
+        "react-router-dom": "4.3.1",
+        "react-scripts": "1.1.4"
+    },
+    "devDependencies": {
+        "lerna": "^6.5.1",
+        "webpack": "^5.47.1",
+        "webpack-cli": "^4.9.1",
+        "html-webpack-plugin": "^5.5.0"
+    }
+}

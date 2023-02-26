@@ -1,0 +1,1 @@
+export { MyPluginComponent } from './Component';
