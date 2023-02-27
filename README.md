@@ -18,7 +18,7 @@ monorepo-react-template/
 ├── packages/ 
 │   ├── front-end/
 │   ├── plugin-component/
-│   ├── plugin-1/
+│   ├── plugin-1/  (depends on the `plugin-component`)
 │   ├── plugin-2/
 │   └── .../
 └──
@@ -64,7 +64,14 @@ $ lerna run build --scope=plugin-1 --scope=plugin-2 --scope=plugin-component
 
 
 <blockquote>
-Note: projects in `monorepo-react-template/packages/` should not include the `node_modules/` folder
+<h3>Note 1</h3>
+
+Make sure that `monorepo-react-template/packages/plugin-component` is copied to `monorepo-react-template/node_modules`, Because `monorepo-react-template/packages/plugin-1` depends on the `monorepo-react-template/packages/plugin-component`.
+
+
+<h3>Note 2</h3>
+
+projects in `monorepo-react-template/packages/` should not include the `node_modules/` folder
 
 The scripts configuration of the project in the packages needs to support the global, for example, the `react-scripts` command does not exist. You need to install it globally first. The same goes for other commands.
 
