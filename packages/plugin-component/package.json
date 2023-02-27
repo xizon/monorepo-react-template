@@ -11,6 +11,18 @@
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "devDependencies": {
+        "@babel/core": "^7.2.0",
+        "@babel/plugin-proposal-class-properties": "^7.2.3",
+        "@babel/plugin-transform-runtime": "^7.16.10",
+        "@babel/polyfill": "^7.0.0",
+        "@babel/preset-env": "^7.2.0",
+        "@babel/preset-react": "^7.0.0",
+        "@babel/preset-typescript": "^7.1.0",
+        "babel-loader": "^8.0.4",
+        "@types/node": "18.7.13",
+        "@types/react": "18.0.17",
+        "@types/react-dom": "18.0.6",
+        "typescript": "4.7.4",
         "webpack": "^5.47.1",
         "webpack-cli": "^4.9.1"
     }

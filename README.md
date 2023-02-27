@@ -2,6 +2,14 @@
 
 A monorepository sample based on Lerna that creates a modern build system for managing and publishing multiple packages.
 
+---
+
+- [English](README.md)
+- [中文](README_CN.md)
+
+---
+
+
 ![screenshot](screenshot.jpg).
 
 
@@ -16,10 +24,10 @@ monorepo-react-template/
 ├── nx.json
 ├── package.json
 ├── packages/ 
-│   ├── front-end/
-│   ├── plugin-component/
-│   ├── plugin-1/  (depends on the `plugin-component`)
-│   ├── plugin-2/
+│   ├── front-end/     ------------------------- (based on nextjs, should enter this directory to compile it separately)
+│   ├── plugin-component/  --------------------- (compile with TypeScript)
+│   ├── plugin-1/   ---------------------------- (depends on the `plugin-component`)
+│   ├── plugin-2/   ---------------------------- (using `react-scripts`)
 │   └── .../
 └──
 ```
@@ -27,7 +35,7 @@ monorepo-react-template/
 
 ## Getting Started
 
-Make sure if NODEJS is installed on your computer.
+Make sure if Node 14+ is installed on your computer.
 
 ### Step 1: Create a new Lerna workspace by running:
 
@@ -56,7 +64,7 @@ $ npx nx graph
 $ lerna run build
 ```
 
-or Build the package you want:
+or Build the package you want (recommend):
 
 ```sh
 $ lerna run build --scope=plugin-1 --scope=plugin-2 --scope=plugin-component
@@ -64,14 +72,14 @@ $ lerna run build --scope=plugin-1 --scope=plugin-2 --scope=plugin-component
 
 
 <blockquote>
-<h3>Note 1</h3>
+<h3>⚠️ Note 1</h3>
 
-Make sure that `monorepo-react-template/packages/plugin-component` is copied to `monorepo-react-template/node_modules`, Because `monorepo-react-template/packages/plugin-1` depends on the `monorepo-react-template/packages/plugin-component`.
+Make sure that `packages/plugin-component` is copied to `node_modules`, Because `packages/plugin-1` depends on the `packages/plugin-component`.
 
 
-<h3>Note 2</h3>
+<h3>⚠️ Note 2</h3>
 
-projects in `monorepo-react-template/packages/` should not include the `node_modules/` folder
+projects in `packages/` should not include the `node_modules/` folder
 
 The scripts configuration of the project in the packages needs to support the global, for example, the `react-scripts` command does not exist. You need to install it globally first. The same goes for other commands.
 
@@ -84,6 +92,11 @@ the same to:
 ```sh
 $ sudo npm install --g webpack webpack-cli
 ```
+
+<h3>⚠️ Note 3</h3>
+
+Project dependencies in packages other than `packages/front-end` should be configured in the package.json file in the root directory.
+
 
 </blockquote>
 
