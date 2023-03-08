@@ -48,7 +48,9 @@ $ npx lerna init
 ```
 
 
-### Step 2: Install dependencies
+### Step 2: Install dependencies (Required)
+
+It will automatically install the dependencies of all resources in `packages/` without duplication.
 
 ```sh
 $ npm install
