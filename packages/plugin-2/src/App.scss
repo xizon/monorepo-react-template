@@ -1,0 +1,21 @@
+
+ul.myapp {
+    margin: 0;
+    padding: 0;
+    display: block;
+    clear: both;
+    border-bottom: 1px solid #333;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+
+    li {
+        cursor: pointer;
+        display: inline-block;
+        padding: 0 30px;
+        margin-bottom: 15px;
+        
+    }
+
+}
+

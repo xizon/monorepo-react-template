@@ -1,11 +1,12 @@
 {
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "nx/tasks-runners/default",
-      "options": {
-        "cacheableOperations": []
+    "tasksRunnerOptions": {
+      "default": {
+        "runner": "nx/tasks-runners/default",
+        "options": {
+          "cacheableOperations": []
+        }
       }
-    }
-  },
-  "targetDefaults": {}
-}
+    },
+    "targetDefaults": {}
+  }
+  

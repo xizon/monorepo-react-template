@@ -13,21 +13,24 @@
 ![screenshot](screenshot.jpg).
 
 
-## File Structures
+## 目录结构
 
 
 ```sh
 monorepo-react-template/
 ├── README.md
+├── README_CN.md
 ├── LICENSE
 ├── lerna.json  
 ├── nx.json
+├── custom.webpack.config.js    ---------------- (设置 `react-scripts` 命令的 webpack 配置)
 ├── package.json
+├── package-lock.json
 ├── packages/ 
 │   ├── front-end/     ------------------------- (基于nextjs, 应该进入此目录单独编译它)
 │   ├── plugin-component/  --------------------- (使用 TypeScript 编译)
 │   ├── plugin-1/   ---------------------------- (依赖于 `plugin-component`)
-│   ├── plugin-2/   ---------------------------- (使用 `react-scripts` 命令)
+│   ├── plugin-2/   ---------------------------- (使用 create-react-app 5+ 的 `react-scripts` 命令)
 │   └── .../
 └──
 ```
@@ -61,15 +64,18 @@ $ npx nx graph
 ### 第4步：要构建所有项目，请运行
 
 ```sh
-$ lerna run build
+$ npm run cra:init
+$ npx lerna run build
 ```
 
 或者构建你想要的包（推荐使用此命令）：
 
 ```sh
-$ lerna run build --scope=plugin-1 --scope=plugin-2 --scope=plugin-component
+$ npm run cra:init
+$ npx lerna run build --scope=plugin-1 --scope=plugin-2 --scope=plugin-component
 ```
 
+请不要全局安装 **learn** 来使用 `lerna run build ` 命令
 
 <blockquote>
 <h3>⚠️ 提示1</h3>
@@ -99,6 +105,32 @@ $ sudo npm install --g webpack webpack-cli
 除 `packages/front-end` 外的其它 packages 内的项目依赖项应该在根目录的 package.json 文件中配置。
 
 
+<h3>⚠️ 提示4</h3>
+
+如果npm包安装失败，请先执行以下命令
+
+```sh
+$ sudo npm cache clean --force
+```
+或者
+
+```sh
+$ sudo chown -R 501:20 "/Users/<YOUR_USER_NAME>/.npm"
+```
+
+<h3>⚠️ 提示5</h3>
+
+Failure Logs:
+
+>  NX   dlopen(/<package_name>/node_modules/@nrwl/nx-darwin-x64/nx.darwin-x64.node, 1): no suitable image found.  Did find:
+
+   	/<package_name>/node_modules/@nrwl/nx-darwin-x64/nx.darwin-x64.node: cannot load 'nx.darwin-x64.node' (load command 0x80000034 is unknown)
+   	/<package_name>/node_modules/@nrwl/nx-darwin-x64/nx.darwin-x64.node: cannot load 'nx.darwin-x64.node' (load command 0x80000034 is unknown)
+
+
+
+如果出现以上错误，请确保 `nx` 包，即 `node_modules/@nrwl` 的版本是 **15.7.2**，**15.8.x** 以上的版本无法正确运行 lerna 和 nx 命令。
+
 
 </blockquote>
 
@@ -106,6 +138,39 @@ $ sudo npm install --g webpack webpack-cli
  ---
 
 更多的命令请参考 [Here](https://lerna.js.org/docs/getting-started).
+
+
+## ⚙️ 自定义构建功能配置
+
+
+从输出包中排除依赖项，您可以更改 `package.json` 文件：
+
+`buildConfig` 属性将链接到 Webpack 配置。
+
+```json
+{
+    ...
+    "buildConfig": {
+        "externals": {
+            "react": "React",
+            "react-dom": "ReactDOM"
+        }
+    },
+    ...
+}
+```
+
+如果要取消外部文件设置，请修改为:
+
+```json
+{
+    ...
+    "buildConfig": {
+        "externals": ""
+    },
+    ...
+}
+```
 
 
 

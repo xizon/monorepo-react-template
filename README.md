@@ -19,15 +19,18 @@ A monorepository sample based on Lerna that creates a modern build system for ma
 ```sh
 monorepo-react-template/
 ├── README.md
+├── README_CN.md
 ├── LICENSE
 ├── lerna.json  
 ├── nx.json
+├── custom.webpack.config.js    ---------------- (set webpack config for `react-scripts`)
 ├── package.json
+├── package-lock.json
 ├── packages/ 
 │   ├── front-end/     ------------------------- (based on nextjs, should enter this directory to compile it separately)
 │   ├── plugin-component/  --------------------- (compile with TypeScript)
 │   ├── plugin-1/   ---------------------------- (depends on the `plugin-component`)
-│   ├── plugin-2/   ---------------------------- (using `react-scripts`)
+│   ├── plugin-2/   ---------------------------- (using `react-scripts` via create-react-app 5+)
 │   └── .../
 └──
 ```
@@ -61,14 +64,18 @@ $ npx nx graph
 ### Step 4: To build all projects, run
 
 ```sh
-$ lerna run build
+$ npm run cra:init
+$ npx lerna run build
 ```
 
 or Build the package you want (recommend):
 
 ```sh
-$ lerna run build --scope=plugin-1 --scope=plugin-2 --scope=plugin-component
+$ npm run cra:init
+$ npx lerna run build --scope=plugin-1 --scope=plugin-2 --scope=plugin-component
 ```
+
+Please do not install **lerna** globally to use `lerna run build`
 
 
 <blockquote>
@@ -98,6 +105,35 @@ $ sudo npm install --g webpack webpack-cli
 Project dependencies in packages other than `packages/front-end` should be configured in the package.json file in the root directory.
 
 
+<h3>⚠️ Note 4</h3>
+
+If the npm package installation fails, execute the following command and then install it
+
+```sh
+$ sudo npm cache clean --force
+```
+or
+
+```sh
+$ sudo chown -R 501:20 "/Users/<YOUR_USER_NAME>/.npm"
+```
+
+
+
+<h3>⚠️ Note 5</h3>
+
+Failure Logs:
+
+>  NX   dlopen(/<package_name>/node_modules/@nrwl/nx-darwin-x64/nx.darwin-x64.node, 1): no suitable image found.  Did find:
+
+   	/<package_name>/node_modules/@nrwl/nx-darwin-x64/nx.darwin-x64.node: cannot load 'nx.darwin-x64.node' (load command 0x80000034 is unknown)
+   	/<package_name>/node_modules/@nrwl/nx-darwin-x64/nx.darwin-x64.node: cannot load 'nx.darwin-x64.node' (load command 0x80000034 is unknown)
+
+
+
+If the above error occurs, please make sure that the `nx` package, that is, `node_modules/@nrwl` version is **15.7.2**, versions above **15.8.x** cannot run lerna and nx commands correctly.
+
+
 </blockquote>
 
  
@@ -106,6 +142,37 @@ Project dependencies in packages other than `packages/front-end` should be confi
  For more commands, please refer to [Here](https://lerna.js.org/docs/getting-started).
 
 
+
+## ⚙️ Custom Configuration of Build
+
+Excluding dependencies from the output bundles, you could change the `package.json` like this:
+
+The `buildConfig` property will be linked to the Webpack configuration.
+
+```json
+{
+    ...
+    "buildConfig": {
+        "externals": {
+            "react": "React",
+            "react-dom": "ReactDOM"
+        }
+    },
+    ...
+}
+```
+
+If you want to cancel the external files setting, please change it to:
+
+```json
+{
+    ...
+    "buildConfig": {
+        "externals": ""
+    },
+    ...
+}
+```
 
 
 
