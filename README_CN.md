@@ -79,6 +79,15 @@ $ npx lerna run build --scope=plugin-1 --scope=plugin-2 --scope=plugin-component
 
 请不要全局安装 **learn** 来使用 `lerna run build ` 命令
 
+
+### 第5步：(可选) 使用自定义的脚本，如：
+
+```sh
+$ npx lerna exec npm run export --scope=plugin-2
+```
+  
+
+
 <blockquote>
 <h3>⚠️ 提示1</h3>
 

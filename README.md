@@ -80,6 +80,13 @@ $ npx lerna run build --scope=plugin-1 --scope=plugin-2 --scope=plugin-component
 Please do not install **lerna** globally to use `lerna run build`
 
 
+### Step 5: (optional) Use a custom script like:
+
+```sh
+$ npx lerna exec npm run export --scope=plugin-2
+```
+  
+
 <blockquote>
 <h3>⚠️ Note 1</h3>
 
