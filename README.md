@@ -142,6 +142,10 @@ Failure Logs:
 
 If the above error occurs, please make sure that the `nx` package, that is, `node_modules/@nrwl` version is **15.7.2**, versions above **15.8.x** cannot run lerna and nx commands correctly.
 
+The kernel version of `nx` is related to your OS (Operating System). If you cannot use the Lerna or NX command normally, please upgrade your OS or downgrade the `nx` version (configure the dependency of **package.json**).
+
+OR, In case something breaks though, you can also disable the Rust hasher by using the environment variable `NX_NON_NATIVE_HASHER=true`. This will cause the task runner to use git to hash files instead of the rust-powered native implementation (which is faster).
+
 
 </blockquote>
 

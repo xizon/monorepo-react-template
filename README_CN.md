@@ -142,6 +142,9 @@ Failure Logs:
 
 如果出现以上错误，请确保 `nx` 包，即 `node_modules/@nrwl` 的版本是 **15.7.2**，**15.8.x** 以上的版本无法正确运行 lerna 和 nx 命令。
 
+`nx` 的内核版本与您当前使用的操作系统有关。 如果您不能正常使用 Lerna 或 NX 命令，请升级您的操作系统或降级 `nx` 的版本号（配置 **package.json** 的依赖项）。
+
+或者，如果运行失败也可以通过使用环境变量 `NX_NON_NATIVE_HASHER=true` 来禁用 Rust hasher。 这将导致任务 runner 使用 git 将其用于哈希文件，而不是由版本过老的本机操作系统实现（快速）。
 
 </blockquote>
 
