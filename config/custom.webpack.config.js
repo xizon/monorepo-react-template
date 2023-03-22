@@ -3,7 +3,7 @@ const path = require('path');
 
 
 // WebPack.config File
-const fileConfig = 'node_modules/react-scripts/config/webpack.config.js'
+const fileConfig = '../node_modules/react-scripts/config/webpack.config.js'
 
 if (fs.existsSync(fileConfig)) {
     

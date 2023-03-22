@@ -23,9 +23,11 @@ monorepo-react-template/
 ├── LICENSE
 ├── lerna.json  
 ├── nx.json
-├── custom.webpack.config.js    ---------------- (set webpack config for `react-scripts`)
 ├── package.json
 ├── package-lock.json
+├── config/
+│   └── custom.webpack.config.js    ------------ (set webpack config for `react-scripts`)
+│   └── grpc.config.js    ---------------------- (copy files of `ts-protoc-gen` package. To generate proto files for the independent development package in Lerna.)
 ├── packages/ 
 │   ├── front-end/     ------------------------- (based on nextjs, should enter this directory to compile it separately)
 │   ├── plugin-component/  --------------------- (compile with TypeScript)
@@ -67,6 +69,7 @@ $ npx nx graph
 
 ```sh
 $ npm run cra:init
+$ npm run grpc:init
 $ npx lerna run build
 ```
 
@@ -74,6 +77,7 @@ or Build the package you want (recommend):
 
 ```sh
 $ npm run cra:init
+$ npm run grpc:init
 $ npx lerna run build --scope=plugin-1 --scope=plugin-2 --scope=plugin-component
 ```
 

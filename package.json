@@ -2,7 +2,7 @@
   "author": "UIUX Lab",
   "email": "uiuxlab@gmail.com",
   "name": "monorepo-react-template",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "This repository is a Monorepo sample based on Lerna that creates a modern build system for managing and publishing multiple packages.",
   "repository": {
     "type": "git",
@@ -23,7 +23,8 @@
     }
   },
   "scripts": {
-    "cra:init": "node custom.webpack.config.js"
+    "cra:init": "node config/custom.webpack.config.js",
+    "grpc:init": "node config/grpc.config.js"
   },
   "devDependencies": {
     "lerna": "^6.5.1",

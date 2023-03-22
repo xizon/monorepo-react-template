@@ -23,9 +23,11 @@ monorepo-react-template/
 ├── LICENSE
 ├── lerna.json  
 ├── nx.json
-├── custom.webpack.config.js    ---------------- (设置 `react-scripts` 命令的 webpack 配置)
 ├── package.json
 ├── package-lock.json
+├── config/
+│   └── custom.webpack.config.js    ------------ (设置 `react-scripts` 命令的 webpack 配置)
+│   └── grpc.config.js    ---------------------- (复制 `ts-protoc-gen` 包的文件，为了在 Lerna 环境下独立开发包无法生成 proto 文件)
 ├── packages/ 
 │   ├── front-end/     ------------------------- (基于nextjs, 应该进入此目录单独编译它)
 │   ├── plugin-component/  --------------------- (使用 TypeScript 编译)
@@ -67,6 +69,7 @@ $ npx nx graph
 
 ```sh
 $ npm run cra:init
+$ npm run grpc:init
 $ npx lerna run build
 ```
 
@@ -74,6 +77,7 @@ $ npx lerna run build
 
 ```sh
 $ npm run cra:init
+$ npm run grpc:init
 $ npx lerna run build --scope=plugin-1 --scope=plugin-2 --scope=plugin-component
 ```
 
