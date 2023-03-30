@@ -12,6 +12,7 @@ module.exports = {
     },
 
     /*
+    =============================
     externals: {
         'react': {
             root: 'React',
@@ -26,12 +27,30 @@ module.exports = {
             amd: 'react-dom',
         },
     },
+
     output: {
-        libraryTarget: 'commonjs',
+        globalObject: 'this',
+        library: "MY_NAME",
+        libraryTarget: "umd",
         filename: '[name].js',
         path: path.resolve(__dirname, '../dist')
     },
     */
+
+
+    /*
+    =============================
+    externals: {
+        'react': 'React',
+        'react-dom': 'ReactDOM',
+    },
+
+    output: {
+        filename: '[name].js',
+        path: path.resolve(__dirname, '../dist')
+    },
+    */
+
 
     experiments: {
         outputModule: true,
