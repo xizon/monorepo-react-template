@@ -2,7 +2,7 @@
   "author": "UIUX Lab",
   "email": "uiuxlab@gmail.com",
   "name": "monorepo-react-template",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "This repository is a Monorepo sample based on Lerna that creates a modern build system for managing and publishing multiple packages.",
   "repository": {
     "type": "git",

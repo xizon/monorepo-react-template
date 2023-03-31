@@ -27,48 +27,22 @@ module.exports = {
             amd: 'react-dom',
         },
     },
+    */
 
     output: {
         globalObject: 'this',
-        library: "MY_NAME",
+        //library: "MY_NAME",
         libraryTarget: "umd",
         filename: '[name].js',
         path: path.resolve(__dirname, '../dist')
     },
-    */
 
-
-    /*
-    =============================
-    externals: {
-        'react': 'React',
-        'react-dom': 'ReactDOM',
-    },
-
-    output: {
-        filename: '[name].js',
-        path: path.resolve(__dirname, '../dist')
-    },
-    */
-
-
-    experiments: {
-        outputModule: true,
-    },
-    output: {
-        library: {
-            // do not specify a `name` here
-            type: 'module',
-        },
-        filename: '[name].js',
-        path: path.resolve(__dirname, '../dist')
-    },
     module: {
         rules: [
             {
 				test: /\.(js|jsx|ts|tsx)$/,
                 loader: 'babel-loader',
-                exclude: path.resolve(__dirname, './node_modules' ),
+                exclude: path.resolve(__dirname, '../node_modules' ),
                 options: {  
 				  'presets': [
 					  '@babel/preset-env',
