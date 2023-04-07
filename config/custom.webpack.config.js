@@ -3,11 +3,11 @@ const path = require('path');
 
 
 // WebPack.config File
-const fileConfig = '../node_modules/react-scripts/config/webpack.config.js'
+const fileConfig = path.resolve(__dirname, '../node_modules/react-scripts/config/webpack.config.js');
 
 if (fs.existsSync(fileConfig)) {
     
-    const configPath = path.resolve(__dirname, './package.json');
+    const configPath = path.resolve(__dirname, '../package.json');
     const json = JSON.parse(fs.readFileSync(configPath));
 
     new Promise((resolve) => {
@@ -25,8 +25,10 @@ if (fs.existsSync(fileConfig)) {
                 const CodeAsString = `${externalsString}entry: paths.appIndexJs,`;
     
                 const result = file
-                                    .replace(/externals\:.*?entry\:\s*paths.appIndexJs,/, 'entry: paths.appIndexJs,')
-                                    .replace(/entry\:\s*paths.appIndexJs,/, CodeAsString);
+                                .replace('static/js/[name].[contenthash:8].js', 'static/js/[name].js')
+                                .replace('static/css/[name].[contenthash:8].css', 'static/css/[name].css')
+                                .replace(/externals\:.*?entry\:\s*paths.appIndexJs,/, 'entry: paths.appIndexJs,')
+                                .replace(/entry\:\s*paths.appIndexJs,/, CodeAsString);
     
                 fs.writeFile(fileConfig, result, function (err) {
                     if (err) return console.log(err)
