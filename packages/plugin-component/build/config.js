@@ -55,6 +55,33 @@ module.exports = {
 					  }	
 				  ]
                 }
+			},
+			{
+
+				test: /\.(sa|sc|c)ss$/,
+				exclude: path.resolve(__dirname, '../node_modules'),
+				use: [
+                    // Creates `style` nodes from JS strings
+                    "style-loader",
+					{
+						loader: "css-loader",  // interprets @import and url() and will resolve them. ( Step 2 )
+						options: {
+							sourceMap: true
+						}
+					},
+					{
+						loader: 'sass-loader', // compiles Sass to CSS ( Step 1 )
+						options: {
+                            implementation: require("sass"),
+                            sourceMap: true,
+                            /* (nested | expanded | compact | compressed) */
+                            sassOptions: {
+                                outputStyle: 'expanded',
+                            },
+						}
+
+					},
+				]
 			}
 	
 			
